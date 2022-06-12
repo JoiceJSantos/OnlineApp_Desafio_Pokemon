@@ -1,0 +1,50 @@
+<body>
+  <nav class="navbar">
+    <div class="container-fluid">
+      <div>
+        <a class="navbar-brand" href="#">
+             Desafio Pokémon
+        </a>
+      </div>
+      <form class="d-flex" role="search" #f ="ngForm" (ngSubmit)="onSubmit(f)">
+        <input type="text" placeholder = "Informe a cidade" class="input-control me-2"
+          id="cidade" name="cidade" [(ngModel)]="cidadeName" required min="4" #cidade="ngModel">
+        <button [disabled]="!f.valid" class="btn" type="submit">Buscar</button>
+      </form>
+    </div>
+  </nav>
+  <div class="erro" *ngIf="!dataTempo.cidade">{{ erro }}</div>
+  <div *ngIf="mostrarCards" id="divTempo" >
+      
+      <div class="dadosTemp" >Cidade: {{ dataTempo.cidade }}</div>
+      <div class="dadosTemp">Temperatura: {{ dataTempo.temperatura }}°C</div>
+      <div class="dadosTemp">Tempo: {{ dataTempo.descricao }}</div>
+
+      <br>
+  
+      <div class="dadosPoke">Pokémon: {{ pokemon.nome }}</div>
+      <div>
+          <img [src] = "pokemon.img" width="50%">
+      </div>
+
+  </div> 
+
+ 
+  <footer class="container-fluid mt-5">
+    <div class="container">
+        <div class=" row justify-content-center">
+            <div class="col-xs-12 col-md-6 text-center">
+                <p>&copy;Copyright-Joice Santos</p>
+                <p class="pages"><a href="https://github.com/JoiceJSantos" target="_blank">GitHub &nbsp;|</a>
+                    <a href="https://www.linkedin.com/in/joice-santos-a483036a" target="_blank">Linkedin</a></p>
+            </div>
+        </div>
+    </div>
+  </footer>
+</body>
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
